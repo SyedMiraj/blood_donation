@@ -1,0 +1,21 @@
+h6{font-size: 22px; text-transform: uppercase;}
+h1{font-size: 17px; color: white;}
+
+
+.footercontainer {
+	background-color: #243a51;
+	color: white;
+	margin-top: 5px;
+	width: 100%;
+	padding-top: 30px;
+}
+.headercontainer {
+	margin : 10px 0px -35px 0px;;
+	border-radius: 0%;
+	height: 100px;
+}
+
+.row {
+	margin-right: 0px;
+    margin-left: 0px;
+}
