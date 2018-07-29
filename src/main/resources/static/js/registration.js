@@ -217,29 +217,33 @@ $(document).ready(function(){
 			}
     	}
     });
-    
-    $("#searchh").on('click', function () {
-        $(this).searchUser();
-    });
-    
-    $.fn.searchUser = function () {
-        var userId = document.getElementById("userid").value;                
-        $.ajax({
-            type: "GET",
-            url: "/api/users/" + userId,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: {userId: userId},
-            success: function (user) {
-            	$(".sign-up-htm").html(user.result);
-            	 console.log(user);
-            },
-            error: function (user) {
-                alert("fail!");
-            }
-        });
-    }; 
-    
+	
+	
+//    $("#searchh").on('click', function () {
+//        $(this).searchUser();
+//    });
+//    
+//    $.fn.searchUser = function () {
+//    	
+//    	var userId ='<%= Session["session"] %>';//make sure that you have defined the session variable
+//        alert(userId);
+////        var userId = document.getElementById("userid").value;                
+//        $.ajax({
+//            type: "GET",
+//            url: "/api/users/" + userId,
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            data: {userId: userId},
+//            success: function (user) {
+//            	$(".sign-up-htm").html(user.result);
+//            	 console.log(user);
+//            },
+//            error: function (user) {
+//                alert("fail!");
+//            }
+//        });
+//    }; 
+//    
     
     $("#updateuser").on("click", function(){
     		var userData =new Object();

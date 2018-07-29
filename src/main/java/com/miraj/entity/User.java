@@ -42,6 +42,12 @@ public class User implements Serializable {
 	
 	@Column(name = "longitude")
 	private double longitude;
+	
+	@Column(name = "role")
+	private String role;
+	
+	@Column(name = "password")
+	private String password;
 
 	@Column(name = "date_of_birth")
 	private Timestamp dateOfBirth;
@@ -54,8 +60,8 @@ public class User implements Serializable {
         @CreationTimestamp
 	private Timestamp updateDate;
         
-        @Column(name = "last_donate_date")
-        private Timestamp lastBloodDonateDate;
+    @Column(name = "last_donate_date")
+    private Timestamp lastBloodDonateDate;
 
 	// bi-directional many-to-one association to blood_inforamtion table
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -118,6 +124,22 @@ public class User implements Serializable {
 		this.longitude = longitude;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Timestamp getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -140,6 +162,14 @@ public class User implements Serializable {
 
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public Timestamp getLastBloodDonateDate() {
+		return lastBloodDonateDate;
+	}
+
+	public void setLastBloodDonateDate(Timestamp lastBloodDonateDate) {
+		this.lastBloodDonateDate = lastBloodDonateDate;
 	}
 
 	public BloodInformation getBloodInformation() {
@@ -170,12 +200,5 @@ public class User implements Serializable {
 		return serialVersionUID;
 	}
 
-    public Timestamp getLastBloodDonateDate() {
-        return lastBloodDonateDate;
-    }
-
-    public void setLastBloodDonateDate(Timestamp lastBloodDonateDate) {
-        this.lastBloodDonateDate = lastBloodDonateDate;
-    }
 
 }

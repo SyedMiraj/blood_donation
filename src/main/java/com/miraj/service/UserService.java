@@ -1,6 +1,5 @@
 package com.miraj.service;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,21 +29,22 @@ public class UserService {
 
 	@Autowired
 	UserServiceImpl userServiceImpl;
+	
 
 	 @Autowired
 	 FreeMarkerConfigurer freemarkerConfigure;
-	
+
 	@ApiOperation(value = "Fetching all the users information.")
 	@RequestMapping(method = { RequestMethod.GET }, value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody UserModelList getUsersDataList() {
 		return userServiceImpl.findAllUser();
 	}
 
-//	@ApiOperation(value = "Fetching individual user information.")
-//	@RequestMapping(method = {RequestMethod.GET }, value = "/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public @ResponseBody UserModel getUsersData(@PathVariable("userId") String userId) {
-//		return userServiceImpl.findSingleUser(userId);
-//	}
+	@ApiOperation(value = "Fetching individual user information.")
+	@RequestMapping(method = {RequestMethod.GET }, value = "/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody UserModel getUsersData(@PathVariable("userId") String userId) {
+		return userServiceImpl.findSingleUser(userId);
+	}
 
 	@ApiOperation(value = "Update or add user information.")
 	@RequestMapping(method = { RequestMethod.POST }, value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,30 +52,28 @@ public class UserService {
 		return userServiceImpl.saveOrUpdateUser(userModel);
 	}
 	
-	
-
-	@RequestMapping(method = {RequestMethod.GET }, value = "/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    ApiResponse getUser(@PathVariable("userId") String userId) {
-        if (userId != null) {
-            UserModel userModel = userServiceImpl.findSingleUser(userId);
-
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("user", userModel);
-            ApiResponse apiResponse = new ApiResponse();
-            String template = null;
-
-            try {
-                template = FreeMarkerTemplateUtils
-                        .processTemplateIntoString(freemarkerConfigure.getConfiguration().getTemplate("show_user.ftl"), map);
-                apiResponse.setResult(template);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return apiResponse;
-        }
-        return null;
-    }
-
+//	@ApiOperation(value = "Fetching individual user information.")
+//	@RequestMapping(method = {RequestMethod.GET }, value = "/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public @ResponseBody
+//    ApiResponse getUser(@PathVariable("userId") String userId) {
+//        if (userId != null) {
+//            UserModel userModel = userServiceImpl.findSingleUser(userId);
+//
+//            Map<String, Object> map = new HashMap<String, Object>();
+//            map.put("user", userModel);
+//            ApiResponse apiResponse = new ApiResponse();
+//            String template = null;
+//
+//            try {
+//                template = FreeMarkerTemplateUtils
+//                        .processTemplateIntoString(freemarkerConfigure.getConfiguration().getTemplate("show_user.ftl"), map);
+//                apiResponse.setResult(template);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return apiResponse;
+//        }
+//        return null;
+//    }
 
 }

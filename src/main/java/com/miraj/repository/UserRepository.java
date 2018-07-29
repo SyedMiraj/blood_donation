@@ -23,5 +23,8 @@ public interface UserRepository extends CrudRepository<User, Integer>{
 	@Query("SELECT user FROM User user")
 	List<User> findAllUser();
 
+	@Query("SELECT user from User user where user.mobileNumber = :mobile")
+	User findOneByMobile(@Param ("mobile") String mobileNumner);
+
 	
 }

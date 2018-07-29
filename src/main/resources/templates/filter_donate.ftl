@@ -62,6 +62,21 @@
                    var infowindow = new google.maps.InfoWindow();
 
                    var marker, j;
+                   var bloodmarker = "/img/blood.jpg";
+                   var image = {
+			          url: "/img/blood.jpg",
+			          // This marker is 20 pixels wide by 32 pixels high.
+			          size: new google.maps.Size(20, 32),
+			          // The origin for this image is (0, 0).
+			          origin: new google.maps.Point(0, 0),
+			          // The anchor for this image is the base of the flagpole at (0, 32).
+			          anchor: new google.maps.Point(0, 32)
+			        };
+			        
+			        var shape = {
+			          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+			          type: 'poly'
+			        };
 
                    for (j = 0; j < locations.length; j++) { 
                      marker = new google.maps.Marker({
@@ -80,3 +95,4 @@
                    }
        
         </script>
+        

@@ -30,22 +30,34 @@
 	    
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="/home">Home<span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">About Us</a></li>
-	        <li><a href="/userupdate">Update User</a></li>
+	        <li><a href="#">About Us</a></li>			
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exchange <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="/exchange/search">Search donor</a></li>
+	            <#if authenticated>
 	            <li><a href="/exchange/donors">Donoate</a></li>
+	            <#else>
+	            <li><a href="/exchange/search">Search donor</a></li>
+	            </#if>
 	          </ul>
 	        </li>
 	      </ul>
 	      
 	      <ul class="nav navbar-nav navbar-right">
+	         <#if !authenticated>
 	        <li><a href="/joinus">Join Us</a></li>
-	        <li><a href="/login">Login</a></li>	        
-	      </ul>
-	      
+	        <li><a href="/login">Login</a></li>		       
+	        <#else>
+	         <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${user.name?if_exists}<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="/userupdate">Update User</a></li>
+	            <li><a href="#">Log Out</a></li>
+	          </ul>
+	        </li> 
+	        </#if>
+	        
+	      </ul>	      
 	    </div>
 	  </div>
 	</nav>

@@ -37,5 +37,9 @@ public class UserConnector {
 	public List<User> findDonarsByBloodGroup(int bloodGroup){
 		return userRepository.findDonarsAtFixedRangeByBloodGroup(bloodGroup);
 	}
+	
+	public User findDonorByUserPhoneNumber(String mobileNumner) {
+		return userRepository.findOneByMobile(mobileNumner);
+	}
 
 }

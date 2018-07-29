@@ -24,7 +24,5 @@
 				</header>
 			</div>
 		</div>
-	</div>
-
-	
+	</div>	
 <#include "footer.ftl">

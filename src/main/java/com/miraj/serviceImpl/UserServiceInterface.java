@@ -11,6 +11,8 @@ public interface UserServiceInterface {
 	
 	public UserModel findSingleUser(String userId);
 	
+	public User findUserByMobile(String mobileNumber);
+	
 	public ApiResponse saveOrUpdateUser(UserModel userModel);
 	
 	public void deleteUser(String userId);

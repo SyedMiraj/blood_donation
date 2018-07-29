@@ -1,10 +1,8 @@
 package com.miraj.serviceImpl;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +60,7 @@ public class UserServiceImpl implements UserServiceInterface {
         if (userId != null) {
             User user = userConnector.findOne(Integer.valueOf(userId));
             if (user != null) {
-            	SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
                 UserModel userModel = new UserModel();
                 userModel.setId(String.valueOf(user.getUserId()));
                 userModel.setName(user.getName());
@@ -143,5 +141,18 @@ public class UserServiceImpl implements UserServiceInterface {
         // TODO Auto-generated method stub
 
     }
+
+	@Override
+	public User findUserByMobile(String mobileNumber) {
+		if(mobileNumber != null) {
+			User user = userConnector.findDonorByUserPhoneNumber(mobileNumber);
+			if(user != null) {
+				return user;
+			}
+		}
+		return null;
+	} 
+    
+    
 
 }
